@@ -1,7 +1,7 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
-import {config as dotenvconfig}  from "dotenv";
+import { config as dotenvconfig } from "dotenv";
 
 dotenvconfig();
 
@@ -10,11 +10,11 @@ const blogEnabled = Boolean(process.env.BLOG_ENABLED === 'true')
 
 const config: Config = {
   title: 'DSO Live Demo Docs',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'Matthaeus Stojak - DevSecOps Enthusiast with a passion for details and efficiency',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: process.env.DEPLOYMENT_URL ?? "https://spmse.github.io",
+  url: process.env.DEPLOYMENT_URL ?? "https://MatzeRB26.github.io",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: process.env.BASE_URL ?? "/",
@@ -50,9 +50,9 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/spmse/dev-blog-template',
+            'https://github.com/MatzeRB26/my-dso-blog',
         },
-        blog: blogEnabled ? 
+        blog: blogEnabled ?
           {
             showReadingTime: true,
             feedOptions: {
@@ -62,7 +62,7 @@ const config: Config = {
             // Please change this to your repo.
             // Remove this to remove the "edit this page" links.
             editUrl:
-              'https://github.com/spmse/dev-blog-template',
+              'https://github.com/MatzeRB26/my-dso-blog',
             // Useful options to enforce blogging best practices
             onInlineTags: 'warn',
             onInlineAuthors: 'warn',
@@ -80,7 +80,7 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'My Site',
+      title: 'Lerntagebuch',
       logo: {
         alt: 'My Site Logo',
         src: 'img/logo.svg',
@@ -93,7 +93,7 @@ const config: Config = {
           label: 'Docs',
         },
         {
-          href: 'https://github.com/spmse/dev-blog-template',
+          href: 'https://github.com/MatzeRB26/my-dso-blog',
           label: 'Github',
           position: 'right',
         },
@@ -149,7 +149,7 @@ const config: Config = {
         {
           className: 'theme-code-block-highlighted-line',
           line: 'highlight-next-line',
-          block: {start: 'highlight-start', end: 'highlight-end'},
+          block: { start: 'highlight-start', end: 'highlight-end' },
         },
         {
           className: 'code-block-error-line',
@@ -162,9 +162,9 @@ const config: Config = {
 
 
 if (blogEnabled) {
-  (config.themeConfig.navbar as any).items.push({to: '/blog', label: 'Blog', position: 'left'});
+  (config.themeConfig as any).items.push({ to: '/blog', label: 'Blog', position: 'left' });
   (
-    config.themeConfig.footer as any
+    config.themeConfig as any
   ).links[2].items.push({
     to: '/blog',
     label: 'Blog',
