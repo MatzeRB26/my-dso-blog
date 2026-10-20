@@ -110,22 +110,9 @@ const config: Config = {
               label: 'Tutorial',
               to: '/docs/guides/intro',
             },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+              label: 'Projekte',
+              to: 'docs/projects/overview',
             },
           ],
         },
@@ -134,12 +121,16 @@ const config: Config = {
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
-            }
+              href: 'gitRepositoryUrl',
+            },
+            {
+              label: 'Template',
+              href: 'https://github.com/spmse/dev-blog-template',
+            },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Sven Patrick Meier (spmse). Built with Docusaurus and 💚.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Matthaeus Stojak. Built with Docusaurus and 💚.`,
     },
     prism: {
       theme: prismThemes.github,
