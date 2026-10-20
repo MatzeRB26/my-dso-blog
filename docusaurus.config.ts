@@ -51,7 +51,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'gitRepositoryUrl',
+            gitRepositoryUrl,
         },
         blog: blogEnabled ?
           {
@@ -63,7 +63,7 @@ const config: Config = {
             // Please change this to your repo.
             // Remove this to remove the "edit this page" links.
             editUrl:
-              'gitRepositoryUrl',
+              gitRepositoryUrl,
             // Useful options to enforce blogging best practices
             onInlineTags: 'warn',
             onInlineAuthors: 'warn',
@@ -94,7 +94,7 @@ const config: Config = {
           label: 'Docs',
         },
         {
-          href: 'gitRepositoryUrl',
+          href: gitRepositoryUrl,
           label: 'Github',
           position: 'right',
         },
@@ -121,7 +121,7 @@ const config: Config = {
           items: [
             {
               label: 'GitHub',
-              href: 'gitRepositoryUrl',
+              href: gitRepositoryUrl,
             },
             {
               label: 'Template',
