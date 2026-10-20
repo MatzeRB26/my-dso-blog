@@ -51,7 +51,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/MatzeRB26/my-dso-blog',
+            'gitRepositoryUrl',
         },
         blog: blogEnabled ?
           {
@@ -63,7 +63,7 @@ const config: Config = {
             // Please change this to your repo.
             // Remove this to remove the "edit this page" links.
             editUrl:
-              'https://github.com/MatzeRB26/my-dso-blog',
+              'gitRepositoryUrl',
             // Useful options to enforce blogging best practices
             onInlineTags: 'warn',
             onInlineAuthors: 'warn',
@@ -94,7 +94,7 @@ const config: Config = {
           label: 'Docs',
         },
         {
-          href: 'https://github.com/MatzeRB26/my-dso-blog',
+          href: 'gitRepositoryUrl',
           label: 'Github',
           position: 'right',
         },
