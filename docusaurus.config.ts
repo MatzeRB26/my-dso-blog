@@ -130,7 +130,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Matthaeus Stojak. Built with Docusaurus and 💚.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Matthaeus Stojak. Built with Docusaurus and 💚, extended from the developer-akademie-starter.`,
     },
     prism: {
       theme: prismThemes.github,
