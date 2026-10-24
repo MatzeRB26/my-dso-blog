@@ -99,7 +99,6 @@ NGINX was installed and configured as the primary web server to serve the static
 Configured Git on the V-Server and generated dedicated SSH keypairs for secure interaction with GitHub repositories.
 
 1. **Server SSH Key Generation**:
-    1. **Server SSH Key Generation**:
     ```bash
     ssh-keygen -t ed25519 -C "server-deploy@example.com"
     ```
@@ -152,4 +151,3 @@ Ensured the web application and server services are functioning correctly.
     ```
 3. **Browser Verification**:
    Navigate to `http://188.245.242.210` in a web browser to confirm that the Docusaurus blog loads properly.
-   ```
