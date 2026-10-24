@@ -36,23 +36,26 @@ To secure server access, SSH password-based authentication was disabled in favor
     ```
 2. **Public Key Transfer**:
    The public key was copied to the server's ~/.ssh/authorized_keys file using ssh-copy-id:
-    ````bash
+    ```bash
     ssh-copy-id root@188.245.242.210
-
+    ```
     Verify Passwordless Login:
     Before disabling password authentication, a new terminal window was opened to test and verify that key-based authentication worked without a password:
     ```bash
     ssh root@188.245.242.210
+    ```
 
 3. **SSH Daemon Configuration**:
    Once key-based login was confirmed working, configured /etc/ssh/sshd_config to disable password authentication and root login:
     ```bash
     PasswordAuthentication no
     PermitRootLogin no
+    ```
 
 4. **Service Restart**:
     ```bash
     sudo systemctl restart sshd
+    ```
 
 ---
 
@@ -149,3 +152,4 @@ Ensured the web application and server services are functioning correctly.
     ```
 3. **Browser Verification**:
    Navigate to `http://188.245.242.210` in a web browser to confirm that the Docusaurus blog loads properly.
+   ```
