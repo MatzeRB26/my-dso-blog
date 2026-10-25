@@ -50,7 +50,7 @@ The two files that were deployed to the server are kept next to this page, in `d
 Connect to the server. The entry in `~/.ssh/config` shown below supplies the user and the key, so the address is enough:
 
 ```bash
-ssh 188.245.242.210
+ssh SERVER_IP
 ```
 
 What lives where on the machine:
@@ -66,8 +66,8 @@ What lives where on the machine:
 Changing the page means copying a new file over it and nothing else, as NGINX reads it per request:
 
 ```bash
-scp index.html 188.245.242.210:/tmp/
-ssh 188.245.242.210 'sudo cp /tmp/index.html /var/www/v-server/index.html'
+scp index.html SERVER_IP:/tmp/
+ssh SERVER_IP 'sudo cp /tmp/index.html /var/www/v-server/index.html'
 ```
 
 Changing the site configuration needs a test and a reload. `reload` replaces the worker processes without dropping connections, which `restart` would:
@@ -90,8 +90,8 @@ ssh-keygen -t ed25519 -f ~/.ssh/vserver_da -C "v-server"
 A matching entry in `~/.ssh/config` makes every later command shorter and pins the identity, so the SSH client does not offer unrelated keys to the server:
 
 ```text
-Host 188.245.242.210
-    HostName 188.245.242.210
+Host SERVER_IP
+    HostName SERVER_IP
     User SERVER_USER
     IdentityFile ~/.ssh/vserver_da
     IdentitiesOnly yes
@@ -101,7 +101,7 @@ Host 188.245.242.210
 `ssh-copy-id` appends the public key to `~/.ssh/authorized_keys` on the server and fixes the permissions on the way:
 
 ```bash
-ssh-copy-id -i ~/.ssh/vserver_da.pub SERVER_USER@188.245.242.210
+ssh-copy-id -i ~/.ssh/vserver_da.pub SERVER_USER@SERVER_IP
 ```
 
 This is the one step that still needs the password, because it is the last moment at which the server has no other way to recognise the client. If a shell on the server is already open, the same result can be achieved by appending the public key by hand:
@@ -118,7 +118,7 @@ The permissions matter: `sshd` ignores `authorized_keys` when the file or its di
 The login with the key has to be verified before passwords are switched off, otherwise a mistake in the configuration locks the account out of the machine. The check is one command, and it has to succeed without asking for anything:
 
 ```bash
-ssh -o PasswordAuthentication=no SERVER_USER@188.245.242.210 'echo ok'
+ssh -o PasswordAuthentication=no SERVER_USER@SERVER_IP 'echo ok'
 ```
 
 ```text
@@ -204,7 +204,7 @@ git --version
 The identity on the server matches the one on the workstation and the one GitHub knows, so commits made on the server are attributed to the same account:
 
 ```bash
-git config --global user.name "MatzeRB26"
+git config --global user.name "YOUR_GITHUB_USERNAME"
 git config --global user.email "your-email@example.com"
 git config --global init.defaultBranch main
 ```
@@ -280,17 +280,17 @@ The site remains available while the new image builds, as the running container 
 The key based login works:
 
 ```bash
-ssh 188.245.242.210 'echo ok'
+ssh SERVER_IP 'echo ok'
 ```
 
 The password login is refused. Public key authentication is switched off for this test, so the client has nothing else to offer:
 
 ```bash
-ssh -o PubkeyAuthentication=no SERVER_USER@188.245.242.210
+ssh -o PubkeyAuthentication=no SERVER_USER@SERVER_IP
 ```
 
 ```text
-SERVER_USER@188.245.242.210: Permission denied (publickey).
+SERVER_USER@SERVER_IP: Permission denied (publickey).
 ```
 
 The list in the parentheses is the point: it names the methods the server still accepts. As long as `password` is missing from it, the password login is closed.
@@ -298,7 +298,7 @@ The list in the parentheses is the point: it names the methods the server still 
 The web server answers with the project page rather than the NGINX welcome screen:
 
 ```bash
-curl -I http://188.245.242.210/
+curl -I http://SERVER_IP/
 ```
 
 ```text
@@ -311,9 +311,9 @@ The connection from the server to GitHub is confirmed with `ssh -T git@github.co
 The documentation site answers at the root, the static page below its prefix, and the container's own port stays closed to the outside:
 
 ```bash
-curl -s -o /dev/null -w "%{http_code}\n" http://188.245.242.210/
-curl -s -o /dev/null -w "%{http_code}\n" http://188.245.242.210/server/
-curl -s -o /dev/null -w "%{http_code}\n" --max-time 5 http://188.245.242.210:3000/
+curl -s -o /dev/null -w "%{http_code}\n" http://SERVER_IP/
+curl -s -o /dev/null -w "%{http_code}\n" http://SERVER_IP/server/
+curl -s -o /dev/null -w "%{http_code}\n" --max-time 5 http://SERVER_IP:3000/
 ```
 
 ```text
