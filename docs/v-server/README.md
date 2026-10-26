@@ -17,7 +17,7 @@ This documentation covers the step-by-step setup and configuration of an Ubuntu 
 
 ## Architecture Overview
 
-- **Server IP**: `188.245.242.210`
+- **Server IP**: `SERVER_IP`
 - **OS**: Ubuntu LTS
 - **Web Server**: NGINX
 - **Runtime**: Node.js 20 LTS / npm
@@ -37,12 +37,12 @@ To secure server access, SSH password-based authentication was disabled in favor
 2. **Public Key Transfer**:
    The public key was copied to the server's ~/.ssh/authorized_keys file using ssh-copy-id:
     ```bash
-    ssh-copy-id root@188.245.242.210
+    ssh-copy-id root@SERVER_IP
     ```
     Verify Passwordless Login:
     Before disabling password authentication, a new terminal window was opened to test and verify that key-based authentication worked without a password:
     ```bash
-    ssh root@188.245.242.210
+    ssh root@SERVER_IP
     ```
 
 3. **SSH Daemon Configuration**:
@@ -74,7 +74,7 @@ NGINX was installed and configured as the primary web server to serve the static
     ```nginx
     server {
         listen 80;
-        server_name 188.245.242.210;
+        server_name SERVER_IP;
 
         root /var/www/docusaurus;
         index index.html;
@@ -147,7 +147,7 @@ Ensured the web application and server services are functioning correctly.
     ```
 2. **Port & HTTP Response Test**:
     ```bash
-    curl -I http://188.245.242.210
+    curl -I http://SERVER_IP
     ```
 3. **Browser Verification**:
-   Navigate to `http://188.245.242.210` in a web browser to confirm that the Docusaurus blog loads properly.
+   Navigate to `SERVER_IP` in a web browser to confirm that the Docusaurus blog loads properly.
